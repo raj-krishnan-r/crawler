@@ -8,21 +8,25 @@ import re
 def crawler(term):
     query = term.replace(' ','+')
 
-    URL = "https://www.google.com/search?client=firefox-b-d&q="+query
+    URL = "https://www.google.com/search?q="+query
+    print(URL)
 
     #
     session = HTMLSession()
+    print(session)
     r = session.get(URL)
+    print(r.html)
     r.html.render()
-
     links = r.html.links
 
     for link in links:
         if re.search("stick=", link):
-            #print(link)
-            crawler2("https://google.com"+link)
+            print(link)
+            #crawler2("https://google.com"+link)
 
 def crawler2(URL):
+    print(URL)
+    return
     #query = term.replace(' ','+')
 
     #URL = "https://www.google.com/search?safe=strict&hl=en&tbm=lcl&rflfq=1&num=20&stick=H4sIAAAAAAAAAB2QO27bUBBFoSJBegYpWHEDBub_qd0kgIF4C4RC2UIMU6DkDWUFWVdWkUs1D3jzOXNmvnwehyhPJ4kwru7KaBq_skiaW1GSOGcGUY-DtSBLVeQmpRGtKCUyAMgpSLUqvHkcFHlSAzNMMqTNEPRyS1HTilAKwPf-tGzTtigJSWcrRNWjC_2p4RKZxj4ObZWKbyR6IcUQGNq1LI1SxNXCKHinskMABJLdrkxpHDyZE0hsaSEKhIyDCJeC4aBQJYwxScJDozk6KgSbCCaFskRRtcOhizR3f2nIwVezPe6Xwf5Z7lQkGIwLuncFSjG9IA5adquIxt2_EtpAN85Mwmz3UtkvouhNbFDO_Pdw-Hf49rysl7dlmt-u63Rd5u34Op3W7c8n_b7eLvPx9_SMZ345v79MP95_fVxv23m5Tk9Pj9PD9Lhul3Wbb8v083Q6H5f_ziFFwAACAAA&ved=2ahUKEwi7vuTZ2ubvAhUHilwKHYc8AQsQjHIwJnoECCAQDQ&rldimm=3283034418642762944&q="+query
